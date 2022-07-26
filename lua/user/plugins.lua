@@ -11,6 +11,7 @@ local function setup(use)
 	use({ "windwp/nvim-autopairs" })
   use({ "windwp/nvim-ts-autotag" })
   use({ "terryma/vim-multiple-cursors" })
+  use({ "RRethy/vim-illuminate" })
 
 	-- Comments
 	use({ "numToStr/Comment.nvim" })
