@@ -10,6 +10,7 @@ local function setup(use)
 	use({ "tpope/vim-surround" })
 	use({ "windwp/nvim-autopairs" })
   use({ "windwp/nvim-ts-autotag" })
+  use({ "terryma/vim-multiple-cursors" })
 
 	-- Comments
 	use({ "numToStr/Comment.nvim" })
