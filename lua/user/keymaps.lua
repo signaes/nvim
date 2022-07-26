@@ -10,10 +10,18 @@ local has_nullls = pcall(require, "null-ls")
 -- --   term_mode = "t",
 -- --   command_mode = "c",
 
-local function map(mode, b, c) keymap(mode, b, c, options) end
-local function n(b, c) map("n", b, c) end
-local function i(b, c) map("i", b, c) end
-local function v(b, c) map("v", b, c) end
+local function map(mode, b, c)
+	keymap(mode, b, c, options)
+end
+local function n(b, c)
+	map("n", b, c)
+end
+local function i(b, c)
+	map("i", b, c)
+end
+local function v(b, c)
+	map("v", b, c)
+end
 
 map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
@@ -37,16 +45,16 @@ n("<Leader>t", ":tabnew<CR>")
 -- Bufferline
 local has_bufferline = pcall(require, "bufferline")
 if not has_bufferline then
-  n("<Tab>", ":tabnext<CR>")
-  n("<S-Tab>", ":tabprevious<CR>")
+	n("<Tab>", ":tabnext<CR>")
+	n("<S-Tab>", ":tabprevious<CR>")
 else
-  n("<Tab>", ":BufferLineCycleNext<CR>")
-  n("<S-Tab>", ":BufferLineCyclePrev<CR>")
+	n("<Tab>", ":BufferLineCycleNext<CR>")
+	n("<S-Tab>", ":BufferLineCyclePrev<CR>")
 end
 
 -- Formatting
 if has_nullls then
-  n("<Leader>l", ":lua vim.lsp.buf.formatting()<CR>")
+	n("<Leader>l", ":lua vim.lsp.buf.formatting()<CR>")
 end
 
 -- Toggle the highlighting for the current search
@@ -97,9 +105,9 @@ v(">", ">gv")
 -- Move text up and down
 v("<Leader>k", ":m .-2<CR>==")
 v("<Leader>j", ":m .+1<CR>==")
-v("p", "\"_dP")
+v("p", '"_dP')
 
 -- Formatting
 if has_nullls then
-  v("<Leader>l", ":lua vim.lsp.buf.range_formatting()<CR>")
+	v("<Leader>l", ":lua vim.lsp.buf.range_formatting()<CR>")
 end

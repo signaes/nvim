@@ -6,12 +6,12 @@ local function setup(use)
 	-- Colors
 	use({ "folke/tokyonight.nvim" })
 
-  -- Text editing
+	-- Text editing
 	use({ "tpope/vim-surround" })
 	use({ "windwp/nvim-autopairs" })
-  use({ "windwp/nvim-ts-autotag" })
-  use({ "terryma/vim-multiple-cursors" })
-  use({ "RRethy/vim-illuminate" })
+	use({ "windwp/nvim-ts-autotag" })
+	use({ "terryma/vim-multiple-cursors" })
+	use({ "RRethy/vim-illuminate" })
 
 	-- Comments
 	use({ "numToStr/Comment.nvim" })
