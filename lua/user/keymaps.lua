@@ -1,5 +1,6 @@
 local options = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
+local has_nullls = pcall(require, "null-ls")
 
 -- Modes
 -- --   normal_mode = "n",
@@ -43,6 +44,11 @@ else
   n("<S-Tab>", ":BufferLineCyclePrev<CR>")
 end
 
+-- Formatting
+if has_nullls then
+  n("<Leader>l", ":lua vim.lsp.buf.formatting()<CR>")
+end
+
 -- Toggle the highlighting for the current search
 n("<Leader>h", ":set hlsearch! hlsearch?<CR>")
 
@@ -71,7 +77,7 @@ n("<Leader>f", "<CMD>lua require('telescope.builtin').find_files()<CR>")
 n("<Leader>g", "<CMD>Telescope live_grep<CR>")
 
 -- Gitsigns
--- n("<Leader>b", "<CMD>lua require('gitsigns').toggle_current_line_blame()<CR>")
+n("<Leader>b", "<CMD>lua require('gitsigns').toggle_current_line_blame()<CR>")
 
 -- Nvimtree
 n("<Leader>\\", ":NvimTreeToggle<CR>")
@@ -80,7 +86,7 @@ n("<Leader>/", ":NvimTreeFindFile<CR>")
 -- Insert Mode --
 
 -- Write
-i("<C-w>", "<Esc>:w<Esc><cr>k")
+i("<C-w>", "<Esc>:w<Esc><CR>k")
 
 -- Visual Mode --
 
@@ -92,3 +98,8 @@ v(">", ">gv")
 v("<Leader>k", ":m .-2<CR>==")
 v("<Leader>j", ":m .+1<CR>==")
 v("p", "\"_dP")
+
+-- Formatting
+if has_nullls then
+  v("<Leader>l", ":lua vim.lsp.buf.range_formatting()<CR>")
+end

@@ -4,7 +4,7 @@ local function setup(use)
   use { "nvim-lua/plenary.nvim" }
 
   -- Colors
-  use { "shaunsingh/seoul256.nvim" }
+  use { "folke/tokyonight.nvim" }
 
   use { "tpope/vim-surround" }
   use { "windwp/nvim-autopairs" }
@@ -28,6 +28,7 @@ local function setup(use)
   -- LSP
   use { "neovim/nvim-lspconfig" }
   use { "williamboman/nvim-lsp-installer" }
+  use { "jose-elias-alvarez/null-ls.nvim" }
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim", tag = "0.1.0" }
