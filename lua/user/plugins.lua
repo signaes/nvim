@@ -6,8 +6,10 @@ local function setup(use)
 	-- Colors
 	use({ "folke/tokyonight.nvim" })
 
+  -- Text editing
 	use({ "tpope/vim-surround" })
 	use({ "windwp/nvim-autopairs" })
+  use({ "windwp/nvim-ts-autotag" })
 
 	-- Comments
 	use({ "numToStr/Comment.nvim" })
