@@ -111,3 +111,6 @@ v("p", '"_dP')
 if has_nullls then
 	v("<Leader>l", ":lua vim.lsp.buf.range_formatting()<CR>")
 end
+
+-- Diagnostics
+n("<Leader>d", ":lua vim.diagnostic.open_float()<CR>")

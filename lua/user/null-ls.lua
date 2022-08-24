@@ -5,7 +5,7 @@ end
 
 local formatting = nullls.builtins.formatting
 local diagnostics = nullls.builtins.diagnostics
-local completion = nullls.builtins.completion
+-- local completion = nullls.builtins.completion
 -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 -- local lsp_format = function(bufnr)
 -- 	-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
@@ -32,8 +32,11 @@ nullls.setup({
 		diagnostics.flake8,
 		diagnostics.pylint,
 		diagnostics.eslint,
+		-- diagnostics.eslint.with({
+		-- 	prefer_local = "node_modules/.bin",
+		-- }),
 		-- completion
-		completion.spell,
+		-- completion.spell,
 	},
 
 	-- on_attach = function(client, bufnr)
