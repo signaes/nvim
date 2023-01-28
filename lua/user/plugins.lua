@@ -1,5 +1,5 @@
 local function setup(use)
-	use({ "wbthomason/packer.nvim" })
+	use({ "wbthomason/packer.nvim", commit = "1d0cf98a561f7fd654c970c49f917d74fafe1530" })
 	use({ "nvim-lua/popup.nvim" })
 	use({ "nvim-lua/plenary.nvim" })
 
@@ -57,6 +57,9 @@ local function setup(use)
 
 	-- Toggleterm
 	use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
+
+  -- Rust
+  use({ "simrat39/rust-tools.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if PACKER_BOOTSTRAP then
