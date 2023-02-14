@@ -3,7 +3,6 @@ local function setup(use)
 	use({ "nvim-lua/plenary.nvim" })
   use({ "wbthomason/packer.nvim" })
   use({ "nvim-lua/popup.nvim" })
-  use({ "nvim-lua/plenary.nvim" })
 
   -- Colors
   use({ "folke/tokyonight.nvim" })
