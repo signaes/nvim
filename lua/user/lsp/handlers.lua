@@ -83,12 +83,10 @@ M.on_attach = function(client, bufnr)
 	vim.notify(client.name .. " starting")
 
 	if client.name == "tsserver" then
-		client.server_capabilities.document_formatting = false -- 0.7 and earlier
-		--[[ client.resolved_capabilities.document_formatting = false -- 0.7 and earlier ]]
 		client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
 	end
 
-	if client.name == "sumneko_lua" then
+	if client.name == "lua_ls" then
 		client.server_capabilities.document_formatting = false -- 0.7 and earlier
 	end
 

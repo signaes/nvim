@@ -22,14 +22,14 @@ end
 
 --[[ local servers = { "jsonls", "lua_ls", "tsserver", "rust_analyzer", "pyright", "terraformls", "gopls" } ]]
 --[[ local servers = { "jsonls", "tsserver", "rust_analyzer", "pyright", "terraformls", "gopls" } ]]
-local servers = { "jsonls", "tsserver", "rust_analyzer", "terraformls", "gopls" }
+local servers = { "lua_ls", "jsonls", "tsserver", "rust_analyzer", "terraformls", "gopls", "pyright" }
 --[[ local servers = { "jsonls", "tsserver", "rust_analyzer", "terraformls", "gopls" } ]]
 
 --[[ lsp_installer.setup({ ]]
 --[[   ensure_installed = servers, ]]
 --[[ }) ]]
 
-local on_attach = function(_, _)
+local on_attach = function(client, bufnr)
 	--[[ vim.keymap.set('n', '<Leader>r', vim.lsp.buf.rename, {}) ]]
 	--[[ vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action, {}) ]]
 	--[[]]
@@ -37,9 +37,10 @@ local on_attach = function(_, _)
 	--[[ vim.keymap.set('n', '<Leader>i', vim.lsp.buf.implementation, {}) ]]
 	--[[ vim.keymap.set('n', '<Leader>z', require('telescope.builtin').lsp_references, {}) ]]
 	--[[ vim.keymap.set('n', 'K', vim.lsp.buf.hover, {}) ]]
-	print("on_attach")
-  --[[ setenv("PYTHONHOME", "/Users/thiagooliveira/.local/share/virtualenvs/fota-api-L7Te_9RY/bin/python") ]]
-  print("PYTHONHOME=", os.getenv("PYTHONHOME"))
+	print("attaching client:", client)
+	print("       to buffer:", bufnr)
+	print("      PYTHONHOME=", os.getenv("PYTHONHOME"))
+	print("      PYTHONPATH=", os.getenv("PYTHONPATH"))
 end
 
 mason.setup({})
@@ -66,7 +67,6 @@ for _, server in pairs(servers) do
 		opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
 	end
 
-	print("Configuring lsp server: ", server)
 	lspconfig[server].setup(opts)
 end
 
@@ -85,9 +85,9 @@ lspconfig["pyright"].setup({
 	settings = {
 		pyright = { autoImportCompletion = true },
 		python = {
-      pythonPath="/Users/thiagooliveira/.local/share/virtualenvs/fota-api-L7Te_9RY/bin/python",
 			analysis = {
 				autoSearchPaths = true,
+				extraPaths = { "/Users/thiagooliveira/Work/FleetOps/fleetops-core/focore" },
 				--[[ diagnosticMode = "openFilesOnly", ]]
 				--[[ useLibraryCodeForTypes = true, ]]
 				--[[ typeCheckingMode = "off", ]]

@@ -48,6 +48,10 @@ local function setup(use)
 		run = ":MasonUpdate",
 	})
 
+	-- DAP (Debug Adapter Protocol)
+	use({ "mfussenegger/nvim-dap" })
+	use({ "mfussenegger/nvim-dap-python" })
+
 	use({ "j-hui/fidget.nvim", opts = {} })
 	use({ "folke/neodev.nvim" })
 	use({
@@ -79,9 +83,11 @@ local function setup(use)
 	--
 	--[[ use({ "williamboman/nvim-lsp-installer" }) ]]
 	use({ "jose-elias-alvarez/null-ls.nvim" })
+	use({ "MunifTanjim/prettier.nvim" })
+	use({ "jay-babu/mason-null-ls.nvim" })
 
 	-- Telescope
-	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0" })
+	use({ "nvim-telescope/telescope.nvim", tag = "0.1.5" })
 
 	-- Treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -113,7 +119,13 @@ local function setup(use)
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if PACKER_BOOTSTRAP then
-		require("packer").sync()
+		local ok, packer = pcall(require, "packer")
+
+		if not ok then
+			return
+		end
+
+		packer.sync()
 	end
 end
 
@@ -153,7 +165,13 @@ end
 packer.init({
 	display = {
 		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
+			local ok, packer_util = pcall(require, "packer.util")
+
+			if not ok then
+				return
+			end
+
+			return packer_util.float({ border = "rounded" })
 		end,
 	},
 })

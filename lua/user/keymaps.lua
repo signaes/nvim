@@ -110,18 +110,22 @@ v("p", '"_dP')
 -- Formatting
 if has_nullls then
 	--[[ v("<Leader>l", ":lua vim.lsp.buf.format({ range=vim.region() })<CR>") ]]
-  --
-  function fmt_range()
-    vim.lsp.buf.format({
-      async = true,
-      range = {
-        ["start"] = vim.api.nvim_buf_get_mark(0, "<"),
-        ["end"] = vim.api.nvim_buf_get_mark(0, ">"),
-      }
-    })
-  end
-  vim.keymap.set('v', '<Leader>l', fmt_range)
+	--
+	function fmt_range()
+		vim.lsp.buf.format({
+			async = true,
+			range = {
+				["start"] = vim.api.nvim_buf_get_mark(0, "<"),
+				["end"] = vim.api.nvim_buf_get_mark(0, ">"),
+			},
+		})
+	end
+
+	vim.keymap.set("v", "<Leader>l", fmt_range)
 end
 
 -- Diagnostics
 n("<Leader>d", ":lua vim.diagnostic.open_float()<CR>")
+
+-- DAP
+n("<Leader>m", ":lua require('dap-python').test_method()<CR>")
